@@ -1,5 +1,5 @@
 'use client';
-
+import Footer from '@/components/templates/footer/footer';
 import NavBar from '@/components/templates/navBar/NavBar';
 import './style.css';
 export default function HomePage() {
@@ -34,6 +34,7 @@ export default function HomePage() {
                 </div>
                 <h1>VENHA FAZER PARTE DESTA IDEIA!!!</h1>
             </main>
-        </>
+            <Footer/> 
+            </>
     );
 }
