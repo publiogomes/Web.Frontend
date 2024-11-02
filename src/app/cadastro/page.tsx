@@ -1,6 +1,9 @@
 'use client';
 import React from 'react';
 import { use, useState } from 'react';
+import './cadastro.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 const Cadastro = () => {
     const [formData, setFormData] = useState({
@@ -126,7 +129,7 @@ const Cadastro = () => {
                                         required
                                     />
                                     <button
-                                        onClick={buscarEnderecoPorCEP}
+                                        // onClick={buscarEnderecoPorCEP}
                                         className="btn btn-success"
                                         type="button"
                                     >
