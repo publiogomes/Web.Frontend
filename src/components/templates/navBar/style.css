@@ -1,0 +1,118 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap');
+
+header {
+    display: flex;
+    width: 100%;
+    background-color: hsl(0, 0%, 100%);
+    padding: 10px 0;
+    color: #565454;
+    /* Adiciona espaço ao redor do conteúdo do header */
+}
+
+#marca {
+    display: flex;
+    margin-left: 1%;
+    width: 10%;
+    bottom: 0%;
+    border-radius: 10px;
+
+}
+
+.sup {
+    width: 80%;
+    margin-left: 3%;
+    margin-right: 3%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 16px;
+
+}
+
+.superior {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    /* Espaço entre os links */
+}
+
+/* Adiciona estilo aos ícones dentro dos links */
+.sup .superior .link i {
+    color: #454545;
+    font-size: 1.5em; /* Aumenta o tamanho dos ícones, ajuste conforme necessário */
+    margin-left: 5px; /* Espaço entre o texto e o ícone */
+    vertical-align: middle; /* Alinha verticalmente com o texto */
+}
+
+/* Ajuste específico para hover ou outras interações */
+.sup .superior .link:hover, .sup .superior .link i:hover {
+    color: rgb(23, 131, 11);
+}
+
+.link {
+    display: flex;
+    margin-left: 15%;
+    margin-right: 15%;
+    text-decoration: none;
+    font-family: 'Roboto', sans-serif;
+    color: rgb(88, 87, 87);
+    font-size: large;
+}
+
+
+.redesocial {
+    width: 18%;
+    justify-content: end;
+    text-align: end;
+    align-items: flex-end;
+    margin-top: 6%;
+    margin-right: 1%;
+}
+
+
+
+@media screen and (min-width: 40in) {
+    .link {
+        font-size: 24px;
+    }
+    
+    h1 {
+        font-size: 40px;
+    }
+    
+    footer {
+        padding: 3%;
+    }
+    
+    footer a {
+        font-size: 24px;
+    }
+    
+    .botaoredondo {
+        width: 180px;
+        height: 180px;
+    }
+}
+
+@media (max-width: 1200px) {
+    .sup {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .link {
+        margin: 10px 0; /* Ajusta os links para layout em coluna */
+    }
+    
+    .redesocial {
+        width: 100%;
+        justify-content: center;
+        gap: 10px; /* Espaço entre ícones sociais */
+    }
+
+    .redesocial img {
+        width: 40px; /* Tamanho maior para ícones sociais em telas menores */
+    }
+}
