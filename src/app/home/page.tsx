@@ -2,6 +2,8 @@
 import Footer from '@/components/templates/footer/footer';
 import NavBar from '@/components/templates/navBar/NavBar';
 import './style.css';
+
+
 export default function HomePage() {
     return (
         <>

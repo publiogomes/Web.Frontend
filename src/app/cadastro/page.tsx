@@ -1,11 +1,12 @@
 'use client';
 import React from 'react';
-import { use, useState } from 'react';
+import { useState } from 'react';
 import './cadastro.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 const Cadastro = () => {
+    const [pessoaFisica, setPessoaFisica] = useState<boolean>(true);
     const [formData, setFormData] = useState({
         tipoCliente: 'usuario',
         nome: '',
@@ -23,6 +24,18 @@ const Cadastro = () => {
         confirmarSenha: '',
     });
 
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const { name, value } = e.target;
+        setFormData(prevState => ({
+            ...prevState,
+            [name]: value
+        }));
+    };
+
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        console.log(formData);
+    };
     return (
         <div className="container mt-6">
             <div className="row justify-content-center">
@@ -35,7 +48,7 @@ const Cadastro = () => {
                             <h2>Faça seu cadastro</h2>
                         </div>
                         <div className="card-body">
-                            <form id="form-cadastro" onSubmit={{/*handleSubmit*/}}>
+                            <form id="form-cadastro" onSubmit={handleSubmit}>
                                 <div className="form-group">
                                     <label htmlFor="tipoCliente">Tipo de Cliente:</label>
                                     <div>
@@ -47,7 +60,7 @@ const Cadastro = () => {
                                                 name="tipoCliente"
                                                 value="usuario"
                                                 checked={formData.tipoCliente === 'usuario'}
-                                                onChange={{/*handleChange*/}}
+                                                onChange={(e) => setFormData({ ...formData, tipoCliente: e.target.value })}
                                             />{' '}
                                             Pessoa Física
                                         </label>
@@ -59,7 +72,7 @@ const Cadastro = () => {
                                                 name="tipoCliente"
                                                 value="parceiro"
                                                 checked={formData.tipoCliente === 'parceiro'}
-                                                onChange={{/*handleChange*/}}
+                                                onChange={(e) => setFormData({ ...formData, tipoCliente: e.target.value })}                                                
                                             />{' '}
                                             Parceiro
                                         </label>
@@ -73,7 +86,7 @@ const Cadastro = () => {
                                         className="form-control"
                                         name="nome"
                                         value={formData.nome}
-                                        onChange={{/*handleChange*/}}
+                                        onChange={handleChange}
                                         required
                                     />
                                     <div className="error-message" id="error-nome"></div>
@@ -86,7 +99,7 @@ const Cadastro = () => {
                                         className="form-control"
                                         name="dataNascimento"
                                         value={formData.dataNascimento}
-                                        onChange={{/*handleChange*/}}
+                                        onChange={handleChange}
                                         required
                                     />
                                 </div>
@@ -98,7 +111,7 @@ const Cadastro = () => {
                                         className="form-control"
                                         name="cpf"
                                         value={formData.cpf}
-                                        onChange={{/*handleChange*/}}
+                                        onChange={handleChange}
                                         required
                                     />
                                     <div className="error-message" id="error-cpf"></div>
@@ -111,7 +124,7 @@ const Cadastro = () => {
                                         className="form-control"
                                         name="telefone"
                                         value={formData.telefone}
-                                        onChange={{/*handleChange*/}}
+                                        onChange={handleChange}
                                         placeholder="(DDD + número)"
                                         required
                                     />
@@ -125,7 +138,7 @@ const Cadastro = () => {
                                         className="form-control"
                                         name="cep"
                                         value={formData.cep}
-                                        onChange={{/*handleChange*/}}
+                                        onChange={handleChange}
                                         required
                                     />
                                     <button
@@ -145,7 +158,7 @@ const Cadastro = () => {
                                         className="form-control"
                                         name="enderecoCompleto"
                                         value={formData.enderecoCompleto}
-                                        onChange={{/*handleChange*/}}
+                                        onChange={handleChange}
                                         placeholder="Rua/Av. Exemplo, 123, Bairro, Cidade, UF"
                                         required
                                     />
@@ -158,7 +171,7 @@ const Cadastro = () => {
                                         className="form-control"
                                         name="numero"
                                         value={formData.numero}
-                                        onChange={{/*handleChange*/}}
+                                        onChange={handleChange}
                                         required
                                     />
                                 </div>
@@ -170,7 +183,7 @@ const Cadastro = () => {
                                         className="form-control"
                                         name="complemento"
                                         value={formData.complemento}
-                                        onChange={{/*handleChange*/}}
+                                        onChange={handleChange}
                                     />
                                 </div>
                                 {formData.tipoCliente === 'parceiro' && (
@@ -183,7 +196,7 @@ const Cadastro = () => {
                                                 className="form-control"
                                                 name="nomeEmpresa"
                                                 value={formData.nomeEmpresa}
-                                                onChange={{/*handleChange*/}}
+                                                onChange={handleChange}
                                             />
                                             <div className="error-message" id="error-nomeEmpresa"></div>
                                         </div>
@@ -195,7 +208,7 @@ const Cadastro = () => {
                                                 className="form-control"
                                                 name="cnpj"
                                                 value={formData.cnpj}
-                                                onChange={{/*handleChange*/}}
+                                                onChange={handleChange}
                                             />
                                             <div className="error-message" id="error-cnpj"></div>
                                         </div>
@@ -209,7 +222,7 @@ const Cadastro = () => {
                                         className="form-control"
                                         name="email"
                                         value={formData.email}
-                                        onChange={{/*handleChange*/}}
+                                        onChange={handleChange}
                                         required
                                     />
                                 </div>
@@ -222,7 +235,7 @@ const Cadastro = () => {
                                             className="form-control"
                                             name="senha"
                                             value={formData.senha}
-                                            onChange={{/*handleChange*/}}
+                                            onChange={handleChange}
                                             required
                                         />
                                         <div className="input-group-append">
@@ -242,7 +255,7 @@ const Cadastro = () => {
                                             className="form-control"
                                             name="confirmarSenha"
                                             value={formData.confirmarSenha}
-                                            onChange={{/*handleChange*/}}
+                                            onChange={handleChange}
                                             required
                                         />
                                         <div className="input-group-append">
