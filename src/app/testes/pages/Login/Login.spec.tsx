@@ -1,42 +1,39 @@
-/*import { render, screen } from "@testing-library/react";
-import Orders from "@/app/orders/page";
+import { render } from "@testing-library/react";
+import { screen } from "@testing-library/dom";
+import Login from "@/app/login/page";
 import mockRouter from "next-router-mock";
 import { setupServer } from "msw/node";
 import { http } from "msw";
 import { env } from "@/config/env";
 
+
 jest.mock("next/navigation", () => require("next-router-mock"));
 
 const server = setupServer(
-  http.get(`https://demo7444709.mockable.io/orders`, () => {
+  http.post(`https://demo7444709.mockable.io/login`, () => {
     return Response.json({
-    Pedidos: [{
-      id: 5,
-      data: "2024-09-15",
-      cpf: "45678901234",
-      forma_pagamento: "prazo",
-      quantidade_itens: 4,
-      valor_total: 120.00
-    }
-    ]
+        response: {
+            message: "Login efetuado com sucesso",
+            error: false
+        }
     });
   })
 );
 
-describe("Orders List Page", () => {
+describe("Login List Page", () => {
   beforeAll(() => {
-    mockRouter.setCurrentUrl("/Orders");
+    mockRouter.setCurrentUrl("/Login");
     server.listen();
   });
   afterAll(() => {
     server.close();
   });
 
-  it("should render orders list with all fields", async () => {
-    render(<Orders />);
+  it("should render Login list with all fields", async () => {
+    render(<Login/>);
 
     // Verifica se a lista de pedidos está sendo renderizada
-    screen.getAllByTestId("ordersList");
+    screen.getAllByTestId("LonginList");
 
     // Verifica os campos do pedido para cada item
     await screen.findByRole("cell", {
@@ -56,4 +53,4 @@ describe("Orders List Page", () => {
     });
     screen.logTestingPlaygroundURL();
   });
-});*/
+});

@@ -1,5 +1,5 @@
-/*import { render, screen } from "@testing-library/react";
-import Orders from "@/app/orders/page";
+import { render, screen } from "@testing-library/react";
+import Cadastro from "@/app/cadastro/page";
 import mockRouter from "next-router-mock";
 import { setupServer } from "msw/node";
 import { http } from "msw";
@@ -8,10 +8,10 @@ import { env } from "@/config/env";
 jest.mock("next/navigation", () => require("next-router-mock"));
 
 const server = setupServer(
-  http.get(`https://demo7444709.mockable.io/orders`, () => {
+  http.get(`https://demo7444709.mockable.io/cadastro`, () => {
     return Response.json({
-    Pedidos: [{
-      id: 5,
+    Cadastro: [{
+      id: 1,
       data: "2024-09-15",
       cpf: "45678901234",
       forma_pagamento: "prazo",
@@ -23,20 +23,20 @@ const server = setupServer(
   })
 );
 
-describe("Orders List Page", () => {
+describe("Cadastro List Page", () => {
   beforeAll(() => {
-    mockRouter.setCurrentUrl("/Orders");
+    mockRouter.setCurrentUrl("/Cadastro");
     server.listen();
   });
   afterAll(() => {
     server.close();
   });
 
-  it("should render orders list with all fields", async () => {
-    render(<Orders />);
+  it("should render cadastro list with all fields", async () => {
+    render(<Cadastro />);
 
     // Verifica se a lista de pedidos está sendo renderizada
-    screen.getAllByTestId("ordersList");
+    screen.getAllByTestId("cadastroList");
 
     // Verifica os campos do pedido para cada item
     await screen.findByRole("cell", {
@@ -56,4 +56,4 @@ describe("Orders List Page", () => {
     });
     screen.logTestingPlaygroundURL();
   });
-});*/
+});
