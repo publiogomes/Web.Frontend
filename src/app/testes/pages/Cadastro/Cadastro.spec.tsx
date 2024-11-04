@@ -3,29 +3,39 @@ import Cadastro from "@/app/cadastro/page";
 import mockRouter from "next-router-mock";
 import { setupServer } from "msw/node";
 import { http } from "msw";
-import { env } from "@/config/env";
 
 jest.mock("next/navigation", () => require("next-router-mock"));
 
 const server = setupServer(
-  http.get(`https://demo7444709.mockable.io/cadastro`, () => {
-    return Response.json({
-    Cadastro: [{
-      id: 1,
-      data: "2024-09-15",
-      cpf: "45678901234",
-      forma_pagamento: "prazo",
-      quantidade_itens: 4,
-      valor_total: 120.00
-    }
-    ]
-    });
+  http.get(`https://demo7444709.mockable.io/ecoVouhcer/usuarios/`, () => {
+    return Response.json(
+      ({
+        Cadastro: [
+          {
+            cep: "180500000",
+            cnpj: "",
+            complemento: "",
+            confirmarSenha: "123",
+            cpf: "58910758066",
+            dataNascimento: "2020-02-02",
+            email: "joao.pedro@teste.com.br",
+            enderecoCompleto: "Av",
+            nome: "Joao",
+            nomeEmpresa: "",
+            numero: "1000",
+            senha: "123",
+            telefone: "(15) 98888-8888",
+            tipoCliente: "usuario"
+          }
+        ]
+      })
+    );
   })
 );
 
 describe("Cadastro List Page", () => {
   beforeAll(() => {
-    mockRouter.setCurrentUrl("/Cadastro");
+    mockRouter.setCurrentUrl("ecoVouhcer/usuarios/");
     server.listen();
   });
   afterAll(() => {
@@ -35,25 +45,17 @@ describe("Cadastro List Page", () => {
   it("should render cadastro list with all fields", async () => {
     render(<Cadastro />);
 
-    // Verifica se a lista de pedidos está sendo renderizada
+    // Verifica se a lista está sendo renderizada
     screen.getAllByTestId("cadastroList");
 
-    // Verifica os campos do pedido para cada item
-    await screen.findByRole("cell", {
-      name: /2024-09-15/i,
-    });
-    await screen.findByRole("cell", {
-      name: /456\.789\.012-34/i,   
-    });
-    await screen.findByRole("cell", {
-      name: /Prazo/i,
-    });
-    await screen.findByRole("cell", {
-      name: /4/i,
-    });
-    await screen.findByRole("cell", {
-      name: /120.00/i,
-    });
+    // Verifica os campos do cadastro para cada item
+    await screen.findByText(/180500000/i);
+    await screen.findByText(/58910758066/i);
+    await screen.findByText(/2020-02-02/i);
+    await screen.findByText(/joao.pedro@teste.com.br/i);
+    await screen.findByText(/Joao/i);
+    await screen.findByText(/(15) 98888-8888/i);
+    await screen.findByText(/usuario/i);
     screen.logTestingPlaygroundURL();
   });
 });
