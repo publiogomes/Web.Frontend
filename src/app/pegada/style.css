@@ -1,0 +1,137 @@
+/* Definir altura completa para html e body */
+html, body {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    background-image: linear-gradient(to bottom, #B7ED9E, white);
+    background-attachment: fixed;
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* Contêiner ocupa toda a altura da tela */
+  .container {
+    background-color: rgba(255, 255, 255, 0.8); /* Fundo branco semi-transparente */
+    border-radius: 10px;
+    padding: 20px;
+    width: 90%;
+    max-width: 1200px; /* Limita a largura máxima para manter um layout agradável */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra leve para destaque */
+    margin: 20px; /* Espaçamento para garantir que o conteúdo não encoste nas bordas da tela */
+    min-height: 100vh; /* Ocupa toda a altura da viewport */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow-y: auto; /* Permitir rolagem se o conteúdo for maior que a tela */
+  }
+  
+  h1, h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .pegada {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  
+  .imagem, .texto {
+    flex: 1 1 45%;
+    margin: 10px;
+  }
+  
+  .imagem img {
+    width: 100%;
+    border-radius: 5px;
+  }
+  
+  .texto {
+    font-size: 1.2em;
+    padding: 10px;
+  }
+  
+  .questionario {
+    margin: 20px 0;
+  }
+  
+  .questionario h2 {
+    margin-bottom: 20px;
+  }
+  
+  .perguntas {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .perguntas label {
+    font-size: 1.1em;
+    margin-bottom: 5px;
+  }
+  
+  .perguntas select {
+    padding: 10px;
+    font-size: 1em;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .botao {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+  }
+  
+  .botao button {
+    padding: 15px 30px;
+    font-size: 1.2em;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .botao button:hover {
+    background-color: #218838;
+  }
+  
+  .soma {
+    text-align: center;
+    font-size: 1.5em;
+    margin-top: 20px;
+  }
+  
+  /* Estilo do elemento com id "resultado" */
+  #resultado {
+    font-size: 2em;
+    color: #1a8041;
+    font-weight: bold;
+    background-color: #f8f9fa;
+    border: 2px solid #127603;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px 0;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  #resultado:hover {
+    background-color: #127603;
+    color: #fff;
+  }
+  
+  @media (max-width: 768px) {
+    .pegada {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .imagem, .texto {
+      flex: 1 1 100%;
+    }
+  }
