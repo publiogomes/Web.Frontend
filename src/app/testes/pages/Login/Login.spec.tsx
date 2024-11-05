@@ -4,10 +4,13 @@ import Login from "@/app/login/page";
 import mockRouter from "next-router-mock";
 import { setupServer } from "msw/node";
 import { http } from "msw";
-import { env } from "@/config/env";
+import nextRouterMock from "next-router-mock";
 
 
-jest.mock("next/navigation", () => require("next-router-mock"));
+
+jest.mock("next/navigation", () => ({
+useRouter: () => nextRouterMock
+}));
 
 const server = setupServer(
   http.post(`https://demo7444709.mockable.io/ecoVouhcer/login`, () => {
