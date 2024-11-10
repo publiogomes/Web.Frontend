@@ -29,3 +29,26 @@ jobs:
 
     - name: Run tests
       run: npm test
+
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '16'
+
+    - name: Install dependencies
+      run: npm ci
+
+    - name: Lint
+      run: npm run lint
+
+    - name: Run build
+      run: npm run build
+
+    - name: Run tests
+      run: npm test
+
+    - name: Versioning (simulação)
+      run: echo "Versionamento realizado"
